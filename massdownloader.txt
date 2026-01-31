@@ -1,0 +1,11 @@
+get /videos page
+get <h1 itemprop="name">
+Folder name = text of ^
+search for ul with id "mostRecentVideosSection"
+get list of li
+for each
+    get data-video-vkey
+    url = https://www.pornhub.com/view_video.php?viewkey={data-video-vkey}
+    add url to txt
+run cmd from folder using txt file
+profit

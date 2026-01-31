@@ -1,0 +1,1 @@
+set sizes, based on distances from each other
