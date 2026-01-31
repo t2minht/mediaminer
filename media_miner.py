@@ -51,7 +51,7 @@ class MediaMiner(QtWidgets.QMainWindow):
         self.URL_label.setFont(font)
         self.URL_label.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.URL_label.setObjectName("URL_label")
-        self.URL_label.setText(_translate("MainWindow", "URL"))
+        self.URL_label.setText(_translate("MainWindow", "URL:"))
         
         
         # Open Folder Button
@@ -90,15 +90,16 @@ class MediaMiner(QtWidgets.QMainWindow):
         # super().resizeEvent(event)
         
     def resizeEvent(self, event):
-        x = int(math.floor(event.size().width()))
-        y = int(math.floor(x / 2))
-        self.media_type_selector.setGeometry(QtCore.QRect(int(math.floor(x * 10/400)), int(math.floor(10 * y/200)), int(math.floor(200 * x/400)), int(math.floor(25 * y/200))))
-        self.url_line_edit.setGeometry(QtCore.QRect(int(math.floor(50 * x/400)), int(math.floor(50 * y/200)), int(math.floor(325 * x/400)), int(math.floor(25 * y/200))))
-        self.URL_label.setGeometry(QtCore.QRect(int(math.floor(x * 10/400)), int(math.floor(50 * y/200)), int(math.floor(25 * x/400)), int(math.floor(25 * y/200))))
-        self.folder_button.setGeometry(QtCore.QRect(int(math.floor(x * 10/400)), int(math.floor(145 * y/200)), int(math.floor(65 * x/400)), int(math.floor(25 * y/200))))
-        self.run_button.setGeometry(QtCore.QRect(int(math.floor(325 * x/400)), int(math.floor(145 * y/200)), int(math.floor(65 * x/400)), int(math.floor(25 * y/200))))
+        width = int(math.floor(event.size().width()))
+        height = int(math.floor(event.size().height()))
+        self.media_type_selector.setGeometry(QtCore.QRect(int(math.floor(width * 10/400)), int(math.floor(height * 10/200)), int(math.floor(width / 2)), int(math.floor(height / 8))))
+        self.URL_label.setGeometry(QtCore.QRect(int(math.floor(width * 10/400)), int(math.floor(height * 50/200)), int(math.floor(width / 8)), int(math.floor(height / 8))))
+        self.url_line_edit.setGeometry(QtCore.QRect(int(math.floor(width * 60 / 400)), int(math.floor(height * 50/200)), int(math.floor(width - (width * 70 / 400))), int(math.floor(height / 8))))
+        self.folder_button.setGeometry(QtCore.QRect(int(math.floor(width * 10/400)), int(math.floor(height * 145/200)), int(math.floor(width / 4)), int(math.floor(height / 8))))
+        self.run_button.setGeometry(QtCore.QRect(int(math.floor(width - (width * 11 / 40))), int(math.floor(height * 145/200)), int(math.floor(width / 4)), int(math.floor(height / 8))))
         
-        self.status_bar.showMessage(f"Window resized to: {x} x {y}")
+        print(int(math.floor(width - (width * 60 / 400))))
+        self.status_bar.showMessage(f"Window resized to: {event.size().width()} x {event.size().height()}")
     # def retranslateUi(self, MainWindow):
     #     _translate = QtCore.QCoreApplication.translate
         # MainWindow.setWindowTitle(_translate("MainWindow", "MediaMiner"))
